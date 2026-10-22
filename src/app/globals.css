@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f6f1e8;
+  --color-ink: #10243f;
+  --color-gold: #c4a15a;
+  --color-gold-ink: #766136;
+  --color-sand: #efe6d8;
+  --color-muted: #5c564e;
+  --color-line: #e5dccf;
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+/* Desktop at 100% should match the fuller 130–140% view. */
+@media (min-width: 1280px) {
+  html {
+    font-size: 21.6px;
+  }
+}
+
+/* Page surface is cream. Navy is reserved for the hero. */
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+section[id],
+footer[id] {
+  scroll-margin-top: 5.25rem;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.7s ease both;
+}
+
+.rise-delay-1 {
+  animation-delay: 0.08s;
+}
+
+.rise-delay-2 {
+  animation-delay: 0.16s;
+}
+
+.rise-delay-3 {
+  animation-delay: 0.24s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .rise,
+  .rise-delay-1,
+  .rise-delay-2,
+  .rise-delay-3 {
+    animation: none;
+  }
+}
