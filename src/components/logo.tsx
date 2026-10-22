@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 type LogoProps = {
@@ -5,32 +6,23 @@ type LogoProps = {
 };
 
 export function Logo({ tone = "ink" }: LogoProps) {
-  const word = tone === "light" ? "text-white" : "text-ink";
+  const light = tone === "light";
 
   return (
-    <Link href="/#top" className="flex items-center gap-2.5">
-      <span className="grid h-9 w-9 place-items-center rounded-full bg-ink text-gold">
-        <svg viewBox="0 0 32 32" className="h-5 w-5" aria-hidden="true">
-          <path
-            d="M16 26V14"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-          <path
-            d="M16 16.2c0-4.6 3.2-7.4 7.4-7.4-1 4.6-3.6 7.4-7.4 7.4Z"
-            fill="currentColor"
-          />
-          <path
-            d="M16 18.6c0-3.6-2.7-6-6.4-6 1 3.7 3.2 6 6.4 6Z"
-            fill="currentColor"
-          />
-        </svg>
-      </span>
-      <span className={`text-[0.9375rem] font-semibold tracking-tight ${word}`}>
-        Harvest Wave
-      </span>
+    <Link
+      href="/#top"
+      className={`inline-flex w-max shrink-0 items-center ${light ? "rounded-2xl bg-white px-3 py-2" : ""}`}
+    >
+      <Image
+        src="/images/logo.png"
+        alt="Harvest Wave"
+        width={802}
+        height={311}
+        priority={!light}
+        unoptimized
+        className={light ? "h-16 w-auto" : "h-10 w-auto lg:h-9"}
+        style={{ width: "auto" }}
+      />
     </Link>
   );
 }
